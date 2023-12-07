@@ -1,0 +1,5 @@
+# Hide the containers sub items
+containers/*
+
+# Hide the storage sub items
+storage/*
