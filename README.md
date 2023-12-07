@@ -7,6 +7,8 @@
   - [Containers](#containers)
   - [Projects](#projects)
 
+Headers are a reference to different sub directories within this main project.
+
 ## Containers
 
 I heavily use containers during my day to day.
