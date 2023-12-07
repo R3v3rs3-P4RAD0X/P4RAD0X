@@ -19,4 +19,4 @@ On top of docker I use portainer to make my life simpler.
 
 ## Projects
 
-In this section there will be multiple different projects that I will create and add too in the future.
+In this section there will be multiple different projects that I will create and add to in the future.
