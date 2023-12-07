@@ -1,0 +1,1 @@
+/root/P4RAD0X/dotfiles/fish/config.fish

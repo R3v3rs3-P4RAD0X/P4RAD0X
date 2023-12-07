@@ -2,4 +2,14 @@
 containers/*
 
 # Hide the storage sub items
-storage/*
+storage/downloads/*
+storage/sync/*
+
+# Hide git related files
+.git*
+.gitignore
+.gitmodules
+
+# Hide environment files
+.env
+.env.*
