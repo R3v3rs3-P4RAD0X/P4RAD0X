@@ -2,7 +2,7 @@
 ; In this file you can set the basic configuration for the application.
 
 ; Port - The port that will be used for the sshd server. Must be a number or None.
-PORT = 2222
+PORT = 22
 
 ; Key Based Authentication - If set to True, the server will only allow key based authentication.
-KEY_BASED_AUTHENTICATION = True
+KEY_BASED_AUTHENTICATION = False

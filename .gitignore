@@ -16,3 +16,6 @@ storage/sync/*
 
 # Hide pycache
 __pycache__/
+
+# Hide config in projects
+projects/setup-arch/src/config
