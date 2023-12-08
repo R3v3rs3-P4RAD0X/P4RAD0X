@@ -41,6 +41,6 @@ if __name__ == "__main__":
 
     # Create a new section
     Printer.log(Printer.format("🔧\tConfiguring system...", colour="blue"))
-    SSHD.create(Printer, 2222)
+    SSHD.create(Printer, port=None)
     Sudoers.create(Printer)
     Printer.log(Printer.format("✅\tSystem configured!", colour="green"))
