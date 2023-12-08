@@ -1,0 +1,13 @@
+####################
+# Script Generated #
+####################
+
+# Include sudoers.d
+#includedir /etc/sudoers.d
+
+# Groups
+%wheel ALL=(ALL) ALL
+%sudo ALL=(ALL) ALL
+
+# Users
+root ALL=(ALL) ALL

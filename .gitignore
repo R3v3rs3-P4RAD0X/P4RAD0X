@@ -13,3 +13,6 @@ storage/sync/*
 # Hide environment files
 .env
 .env.*
+
+# Hide pycache
+__pycache__/
