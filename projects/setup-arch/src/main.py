@@ -3,7 +3,7 @@ This script will handle the rest of the setup process.
 """
 
 # Imports #
-from components import Pacman, Printer, SSHD, Sudoers
+from components import SSHD, Pacman, Printer, Sudoers
 from system import System
 
 # Main #
@@ -29,7 +29,7 @@ if __name__ == "__main__":
         "yay",
         "fish",
     )
-    
+
     # Check if the length of upgradable is greater than 0
     if upgradable and len(upgradable) > 0:
         # Create a new section
@@ -44,6 +44,10 @@ if __name__ == "__main__":
 
     # Create a new section
     Printer.log(Printer.format("🔧\tConfiguring system...", colour="blue"))
-    SSHD.create(Printer, port=config.get("PORT", None), key_based=config.get("KEY_BASED_AUTHENTICATION", False))
+    SSHD.create(
+        Printer,
+        port=config["sshd"].get("port", None),
+        key_based=config["sshd"].get("key_based_authentication", False),
+    )
     Sudoers.create(Printer)
     Printer.log(Printer.format("✅\tSystem configured!", colour="green"))

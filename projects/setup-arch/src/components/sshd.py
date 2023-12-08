@@ -2,16 +2,18 @@
 This file will handle the creating of the sshd_config file.
 """
 
-# Imports
-from system import System
 import os
 import random
+
+# Imports
+from system import System
+
 
 # SSHD class
 class SSHD:
     def __init__(self):
         raise Exception("This class cannot be instantiated.")
-    
+
     @staticmethod
     def create(Printer, port: int = None, key_based: bool = False) -> None:
         """
@@ -19,12 +21,18 @@ class SSHD:
         """
         # Create the sshd_config file
         System.call("cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak")
-        
+
         # Get the template file
-        template = System.readFile(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "template_files", "sshd_config.txt")))
-        
+        template = System.readFile(
+            os.path.abspath(
+                os.path.join(
+                    os.path.dirname(__file__), "..", "template_files", "sshd_config.txt"
+                )
+            )
+        )
+
         # Check if port was not provided
-        if not port or not port.isdigit():
+        if port is None or type(port) != int:
             # Generate a random port
             port = random.randint(1024, 65535)
 
@@ -48,4 +56,6 @@ class SSHD:
         System.call("systemctl restart sshd")
 
         # Print a success message
-        Printer.log(Printer.format(f"✅\tSSHD Config created! Port: ({port})", colour="green"))
+        Printer.log(
+            Printer.format(f"✅\tSSHD Config created! Port: ({port})", colour="green")
+        )
