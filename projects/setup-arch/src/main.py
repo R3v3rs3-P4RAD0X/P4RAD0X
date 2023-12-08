@@ -8,6 +8,9 @@ from system import System
 
 # Main #
 if __name__ == "__main__":
+    # Get the config
+    config = System.readConfig()
+
     # Print header
     Printer.header()
 
@@ -41,6 +44,6 @@ if __name__ == "__main__":
 
     # Create a new section
     Printer.log(Printer.format("🔧\tConfiguring system...", colour="blue"))
-    SSHD.create(Printer, port=None)
+    SSHD.create(Printer, port=config.get("PORT", None), key_based=config.get("KEY_BASED_AUTHENTICATION", False))
     Sudoers.create(Printer)
     Printer.log(Printer.format("✅\tSystem configured!", colour="green"))

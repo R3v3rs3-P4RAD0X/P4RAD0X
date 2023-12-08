@@ -30,7 +30,7 @@ PermitRootLogin without-password
 MaxAuthTries 6
 # MaxSessions 10
 
-PubkeyAuthentication yes
+PubkeyAuthentication {pub_key}
 
 ## Authorized Keys Configuration ##
 # The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2
@@ -39,7 +39,7 @@ AuthorizedKeysFile	.ssh/authorized_keys
 
 ## Password Authentication Configuration ##
 # Disable password authentication
-PasswordAuthentication no
+PasswordAuthentication {pass_auth}
 PermitEmptyPasswords no
 
 ## User Access Control Configuration ##

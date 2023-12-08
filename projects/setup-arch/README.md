@@ -15,8 +15,8 @@ sudo chmod +x setup.sh && ./setup.sh
 
 This script will overwrite these files;
 
-#### /etc/sudoers
+### /etc/sudoers
 
-#### /etc/ssh/sshd_config
+### /etc/ssh/sshd_config
 
-This script overwrites the basic config file for ssh. If you don't specify a port inside of main.py it will generate the file with a random port. This script also makes ssh accessible only using key based authentication on the root user.
+This script overwrites the basic config file for ssh. If you don't specify a port inside of config file, it will generate the file with a random port. This script also makes ssh accessible only using key based authentication on the root user.

@@ -13,7 +13,7 @@ class SSHD:
         raise Exception("This class cannot be instantiated.")
     
     @staticmethod
-    def create(Printer, port: int = None) -> None:
+    def create(Printer, port: int = None, key_based: bool = False) -> None:
         """
         Creates the sshd_config file.
         """
@@ -24,7 +24,7 @@ class SSHD:
         template = System.readFile(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "template_files", "sshd_config.txt")))
         
         # Check if port was not provided
-        if not port:
+        if not port or not port.isdigit():
             # Generate a random port
             port = random.randint(1024, 65535)
 
@@ -35,6 +35,10 @@ class SSHD:
 
         # Replace the port in the template
         template = template.replace("{port}", str(port))
+
+        # Check if key based authentication is enabled
+        template = template.replace("{pub_key}", "yes" if key_based else "no")
+        template = template.replace("{pass_auth}", "no" if key_based else "yes")
 
         # Write the template to the sshd_config file
         with open("/etc/ssh/sshd_config", "w") as file:
