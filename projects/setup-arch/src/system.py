@@ -8,7 +8,6 @@ import configparser
 
 # Imports
 import os
-import re
 import sys
 
 
@@ -59,6 +58,14 @@ class System:
         """
         # Get the path to the config file
         path = os.path.abspath(os.path.join(os.path.dirname(__file__), "config.ini"))
+
+        # Check if the config file exists
+        if not os.path.exists(path):
+            # Print an error
+            print("Config file not found!", file=sys.stderr)
+
+            # Exit
+            sys.exit(1)
 
         # Create a config parser
         parser = configparser.ConfigParser()
