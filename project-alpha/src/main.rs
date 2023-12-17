@@ -124,7 +124,7 @@ impl Project {
         let mut projects = std::fs::OpenOptions::new()
             .write(true)
             .append(true)
-            .open("/P4RAD0X/project-alpha/projects.yml")
+            .open("/P4RAD0X/projects/projects.yml")
             .expect("Failed to open projects.yml");
 
         // Write the project
