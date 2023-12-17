@@ -19,3 +19,12 @@ __pycache__/
 
 # Hide config in projects
 config.ini
+
+# Hide Rust related files
+Cargo.lock
+Cargo.toml
+target/
+
+# A glob for hiding anyfiles that have a certain prefix
+test-*
+sensitive-*
