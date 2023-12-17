@@ -1,5 +1,4 @@
 projects:
-
 	- archer: 
 		description: A set of scripts used to post-install setup Arch Linux distros.
 		language: python
