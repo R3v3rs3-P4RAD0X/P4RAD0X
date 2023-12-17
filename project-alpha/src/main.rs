@@ -1,6 +1,6 @@
-use std::{process::Command, io::Write};
+use std::{io::Write, process::Command};
 use strum::IntoEnumIterator;
-use strum_macros::{EnumIter, Display};
+use strum_macros::{Display, EnumIter};
 
 // Constants
 const BASE_PATH: &str = "/P4RAD0X/projects";
@@ -14,7 +14,7 @@ enum Language {
     Ruby,
     Go,
     Bash,
-    Web
+    Web,
 }
 
 impl Language {
@@ -49,7 +49,6 @@ impl Language {
         }
     }
 }
-
 
 struct Project {
     name: String,
@@ -93,9 +92,15 @@ impl Project {
         let mut title_case = String::new();
         for word in name_split {
             title_case.push_str(&to_title_case(word));
-            
+
             // Check if the word is not the last word
-            if word != self.name.split(|c| c == '-' || c == '_' || c == ' ').last().unwrap() {
+            if word
+                != self
+                    .name
+                    .split(|c| c == '-' || c == '_' || c == ' ')
+                    .last()
+                    .unwrap()
+            {
                 title_case.push_str(" ");
             }
         }
@@ -128,7 +133,7 @@ impl Project {
         //     description: <description>
         //     language: <language>
         projects
-            .write_all(format!("\n\t- {}: \n", self.name).as_bytes())
+            .write_all(format!("\t- {}: \n", self.name).as_bytes())
             .unwrap();
 
         projects
@@ -137,6 +142,11 @@ impl Project {
 
         projects
             .write_all(format!("\t\tlanguage: {}\n", self.language.to_string()).as_bytes())
+            .unwrap();
+
+        // Write the path
+        projects
+            .write_all(format!("\t\tpath: {}\n", self.create_path()).as_bytes())
             .unwrap();
 
         // Write a new line
@@ -151,11 +161,7 @@ impl Project {
         let path = self.create_path();
 
         // Create a new directory
-        Command::new("mkdir")
-            .arg("-p")
-            .arg(&path)
-            .status()
-            .unwrap();
+        Command::new("mkdir").arg("-p").arg(&path).status().unwrap();
 
         // Return the path
         path
@@ -265,12 +271,16 @@ impl Project {
 
                 // Write the makefile
                 makefile.write_all(b"CC=g++\n").unwrap();
-                makefile.write_all(b"CFLAGS=-Wall -Wextra -pedantic -std=c++17\n").unwrap();
+                makefile
+                    .write_all(b"CFLAGS=-Wall -Wextra -pedantic -std=c++17\n")
+                    .unwrap();
                 makefile.write_all(b"\n").unwrap();
                 makefile.write_all(b"all: main\n").unwrap();
                 makefile.write_all(b"\n").unwrap();
                 makefile.write_all(b"main: main.cpp\n").unwrap();
-                makefile.write_all(b"    $(CC) $(CFLAGS) -o main main.cpp\n").unwrap();
+                makefile
+                    .write_all(b"    $(CC) $(CFLAGS) -o main main.cpp\n")
+                    .unwrap();
                 makefile.write_all(b"\n").unwrap();
                 makefile.write_all(b"clean:\n").unwrap();
                 makefile.write_all(b"    rm -f main\n").unwrap();
@@ -440,11 +450,13 @@ impl Project {
                 main.write_all(b"<html>\n").unwrap();
                 main.write_all(b"<head>\n").unwrap();
                 main.write_all(b"    <title></title>\n").unwrap();
-                main.write_all(b"    <link rel=\"stylesheet\" href=\"styles/main.css\">\n").unwrap();
+                main.write_all(b"    <link rel=\"stylesheet\" href=\"styles/main.css\">\n")
+                    .unwrap();
                 main.write_all(b"</head>\n").unwrap();
                 main.write_all(b"<body>\n").unwrap();
                 main.write_all(b"\n").unwrap();
-                main.write_all(b"    <script src=\"src/main.js\"></script>\n").unwrap();
+                main.write_all(b"    <script src=\"src/main.js\"></script>\n")
+                    .unwrap();
                 main.write_all(b"</body>\n").unwrap();
                 main.write_all(b"</html>\n").unwrap();
 
@@ -477,7 +489,6 @@ impl Project {
                     .unwrap();
             }
         }
-    
     }
 }
 
@@ -517,7 +528,7 @@ fn main() {
 
     // Create a variable for the language
     let language: Language;
-    
+
     // Print all the languages
     println!("Languages:");
     for language in Language::iter() {
@@ -560,7 +571,6 @@ fn main() {
                 break;
             }
         }
-        
     }
 
     // Create the project

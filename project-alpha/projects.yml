@@ -2,9 +2,20 @@ projects:
 	- archer: 
 		description: A set of scripts used to post-install setup Arch Linux distros.
 		language: python
-
+		path: /P4RAD0X/projects/python/archer
 
 	- api-p4rad0x: 
 		description: A multi-level api for my domain.
 		language: python
+		path: /P4RAD0X/projects/python/api-p4rad0x
+
+	- ld: 
+		description: A simple list script written in Golang.
+		language: go
+		path: /P4RAD0X/projects/go/ld
+
+	- ld: 
+		description: A simple LS script written in Ruby
+		language: ruby
+		path: /P4RAD0X/projects/ruby/ld
 
