@@ -14,3 +14,38 @@ projects:
 		language: ruby
 		path: /P4RAD0X/projects/ruby/ld
 
+	- upload-api: 
+		description: A file uploader and handler using an API like structure
+		language: python
+		path: /P4RAD0X/projects/python/upload-api
+
+	- fib: 
+		description: times a fib function
+		language: cpp
+		path: /P4RAD0X/projects/cpp/fib
+
+	- fib: 
+		description: fib
+		language: cpp
+		path: /P4RAD0X/projects/cpp/fib
+
+	- fib: 
+		description: fib
+		language: python
+		path: /P4RAD0X/projects/python/fib
+
+	- discord-bot: 
+		description: A random bot
+		language: rust
+		path: /P4RAD0X/projects/rust/discord-bot
+
+	- website: 
+		description: oof
+		language: web
+		path: /P4RAD0X/projects/web/website
+
+	- testing-project: 
+		description: testing
+		language: rust
+		path: /P4RAD0X/projects/rust/testing-project
+
