@@ -69,7 +69,7 @@ class Tracker:
         # Save the storage
         self.save_storage(storage)
 
-    def populate_files(self, project: dict) -> None:
+    def populate_files(self, project: dict) -> dict:
         # Get the files in the project
         files = os.listdir(project["path"])
 

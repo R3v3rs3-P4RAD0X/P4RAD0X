@@ -48,9 +48,14 @@ def latest_modified(directory):
         ),
     )[0]
 
-
 # A function that prints a table
 def tabulate(columns: list[str], rows: list[str]) -> None:
+    # Check if the length of columns is != length of rows
+    if len(columns) != len(rows[0]):
+        raise Exception(
+            f"Length of columns: {len(columns)} must be equal to length of rows: {len(rows[0])}"
+        )
+    
     # Get the maximum length of each column
     max_lengths = [len(column) for column in columns]
 
