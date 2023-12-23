@@ -1,0 +1,185 @@
+/* Import Roboto Mono */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap');
+
+/* Set the :root variables */
+:root {
+    font: 16px/1.5 'Roboto Mono', monospace;
+
+    /* Color Schemes */
+    --color-primary: #f5f5f5;
+    --color-secondary: #212121;
+    --color-accent: #ff4081;
+    --color-accent-dark: #c60055;
+    --color-accent-light: #ff79b0;
+}
+
+/* Check if the user is using dark mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Color Schemes */
+        --color-primary: #212121;
+        --color-secondary: #f5f5f5;
+        --color-accent: #ff4081;
+        --color-accent-dark: #c60055;
+        --color-accent-light: #ff79b0;
+    }
+}
+
+/* Set * settings */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* Set the body */
+body {
+    width: 100vw;
+    height: 100vh;
+
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+
+/* Container styling */
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+/* Container header */
+.container header {
+    width: 100%;
+    height: 10%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container Nav */
+.container nav {
+    width: 100%;
+    height: 10%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container Nav Ul */
+.container nav ul {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container Nav Ul Li */
+.container nav ul li {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container Nav Ul Li a */
+.container nav ul li a {
+    padding: 0.5rem;
+
+    text-decoration: none;
+    color: var(--color-secondary);
+
+    cursor: pointer;
+    /* Align center */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container Nav Ul Li a#selected */
+.container nav ul li a#selected {
+    color: var(--color-accent);
+}
+
+/* Container Nav Ul Li a:hover */
+.container nav ul li a:hover {
+    color: var(--color-accent);
+}
+
+/* Container Footer */
+.container footer {
+    width: 100%;
+    height: 10%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Stuck to the bottom */
+    position: absolute;
+    bottom: 0;
+}
+
+/* Container Main */
+.container main {
+    width: 100%;
+    height: 70%;
+
+    padding: 1rem;
+}
+
+/* Container Main Ul */
+.container main ul {
+    width: 100%;
+    height: 100%;
+
+    /* Display */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-gap: 1rem;
+}
+
+/* Container Main Ul li */
+.container main ul li {
+    list-style: none;
+}
+
+/* Container Main Ul li div.card */
+.container main ul li div.card {
+    padding: 1rem;
+
+    border-radius: 0.5rem;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+/* Container Main Ul li div.card h2 */
+.container main ul li div.card h2 {
+    font-size: 1.5rem;
+}
+
+/* Container Main Ul li div.card p */
+.container main ul li div.card p {
+    font-size: 1rem;
+}
+
+/* Container Main Ul li div.card button */
+.container main ul li div.card button {
+    width: 100%;
+    height: 100%;
+
+    padding: 0.5rem;
+
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+
+    cursor: pointer;
+}

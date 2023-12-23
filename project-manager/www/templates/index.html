@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Manger | {{ title }}</title>
+    <!-- <link rel="stylesheet" href="/static/css/index.css"> -->
+    <link rel="stylesheet" href="/static/css/home.css">
+</head>
+<body>
+    <!-- Container -->
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Project Manager</h1>
+        </header>
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a id="selected" href="/home">Home</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/tasks">Tasks</a></li>
+                <li><a href="/users">Users</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+        <!-- Main -->
+        <main>
+            <!-- Loop through the projects list -->
+            {% if projects|length > 0 %}
+                <ul>
+                    {% for project in projects %}
+                        <li>
+                            <div class="card">
+                                <h2>{{ project.name }}</h2>
+                                <p>{{project.language}}</p>
+                                <br>
+                                <button id="{{project.key}}">Open</button>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <!-- Create a new project -->
+                <div class="new-project">
+                    <h2>Create a new project</h2>
+                    <form action="/projects" method="POST">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" placeholder="Project name" required>
+                        <label for="language">Language</label>
+                        <input type="text" name="language" id="language" placeholder="Project language" required>
+                        <input type="submit" value="Create">
+                    </form>
+                </div>
+            {% endif %}
+        </main>
+        <!-- Footer -->
+        <footer>
+            <p>Project Manager &copy; 2023</p>
+        </footer>
+</body>
+</html>

@@ -17,6 +17,9 @@ storage/sync/*
 # Hide pycache
 __pycache__/
 
+# Hide python .venv
+.venv/
+
 # Hide config in projects
 config.ini
 
