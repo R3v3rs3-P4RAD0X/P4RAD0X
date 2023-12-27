@@ -1,5 +1,0 @@
-Removed link: /root/.config/starship.toml
-Removed link: /root/.config/fish/config.fish
-Created link: /root/.config/starship.toml
-Created subdirectory: fish
-Created link: /root/.config/fish/config.fish

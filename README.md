@@ -1,22 +1,34 @@
-# Welcome to P4RAD0X
+# P4RAD0X
 
-## Table Of Contents
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-- [Welcome to P4RAD0X](#welcome-to-p4rad0x)
-  - [Table Of Contents](#table-of-contents)
-  - [Containers](#containers)
-  - [Projects](#projects)
+## Description
 
-Headers are a reference to different sub directories within this main project.
+Welcome to P4RAD0X. This is a large repository of all my projects and scripts.
 
-## Containers
+## Table of Contents
 
-I heavily use containers during my day to day.
-Containers are configured to have volumes mounted into P4RAD0X/containers/{container_name}.
+- [P4RAD0X](#p4rad0x)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [License](#license)
+  - [Contact](#contact)
 
-I use docker for creating, managing and running my containers.
-On top of docker I use portainer to make my life simpler.
+## Installation
 
-## Projects
+Instructions on how to install and run your project.
 
-In this section there will be multiple different projects that I will create and add to in the future.
+## Usage
+
+Instructions on how to use your project.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Contact
+
+- GitHub: [R3v3rs3-P4RAD0X](https://github.com/R3v3rs3-P4RAD0X)
+- Email: <contact@p4rad0x.co.uk>
