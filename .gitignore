@@ -7,7 +7,6 @@
 *.log
 *.log.*
 *.log-*
-*.log/*
 
 # Hide directories
 node_modules/
