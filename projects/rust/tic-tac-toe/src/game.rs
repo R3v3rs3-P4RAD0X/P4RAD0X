@@ -8,6 +8,7 @@ pub mod game {
     pub struct Player {
         symbol: char,
         score: u8,
+        human: bool,
     }
 
     pub struct Board {
@@ -19,7 +20,7 @@ pub mod game {
         pub fn new() -> Game {
             Game {
                 board: Board::new(),
-                players: [Player::new('X'), Player::new('O')],
+                players: [Player::new('X', true), Player::new('O', false)],
                 turn: 0,
             }
         }
@@ -49,7 +50,30 @@ pub mod game {
 
                     // Print the winner
                     println!("Player {} wins!", self.players[self.turn as usize].symbol);
-                    break;
+
+                    // Add a point to the winner's score
+                    self.players[self.turn as usize].score += 1;
+
+                    // Print the score
+                    println!("Score:");
+                    println!("Player X: {}", self.players[0].score);
+                    println!("Player O: {}", self.players[1].score);
+
+                    // Ask the user if they want to play again
+                    println!("Play again? (y/n)");
+                    let mut play_again = String::new();
+                    std::io::stdin()
+                        .read_line(&mut play_again)
+                        .expect("Failed to read line.");
+
+                    // Check if the user wants to play again
+                    if play_again.trim().to_lowercase() == "y" {
+                        // Reset the board
+                        self.board = Board::new();
+                    } else {
+                        // Exit the game
+                        break;
+                    }
                 }
                 self.determine_turn();
             }
@@ -62,49 +86,41 @@ pub mod game {
                     && self.board.cells[0][1] == player.symbol
                     && self.board.cells[0][2] == player.symbol
                 {
-                    println!("Player {} wins!", player.symbol);
                     return true;
                 } else if self.board.cells[1][0] == player.symbol
                     && self.board.cells[1][1] == player.symbol
                     && self.board.cells[1][2] == player.symbol
                 {
-                    println!("Player {} wins!", player.symbol);
                     return true;
                 } else if self.board.cells[2][0] == player.symbol
                     && self.board.cells[2][1] == player.symbol
                     && self.board.cells[2][2] == player.symbol
                 {
-                    println!("Player {} wins!", player.symbol);
                     return true;
                 } else if self.board.cells[0][0] == player.symbol
                     && self.board.cells[1][0] == player.symbol
                     && self.board.cells[2][0] == player.symbol
                 {
-                    println!("Player {} wins!", player.symbol);
                     return true;
                 } else if self.board.cells[0][1] == player.symbol
                     && self.board.cells[1][1] == player.symbol
                     && self.board.cells[2][1] == player.symbol
                 {
-                    println!("Player {} wins!", player.symbol);
                     return true;
                 } else if self.board.cells[0][2] == player.symbol
                     && self.board.cells[1][2] == player.symbol
                     && self.board.cells[2][2] == player.symbol
                 {
-                    println!("Player {} wins!", player.symbol);
                     return true;
                 } else if self.board.cells[0][0] == player.symbol
                     && self.board.cells[1][1] == player.symbol
                     && self.board.cells[2][2] == player.symbol
                 {
-                    println!("Player {} wins!", player.symbol);
                     return true;
                 } else if self.board.cells[0][2] == player.symbol
                     && self.board.cells[1][1] == player.symbol
                     && self.board.cells[2][0] == player.symbol
                 {
-                    println!("Player {} wins!", player.symbol);
                     return true;
                 }
             }
@@ -117,6 +133,19 @@ pub mod game {
         }
 
         fn take_turn(&mut self) {
+            // Check if the player is not human
+            if !self.players[self.turn as usize].human {
+                // Place the player's symbol in the first available cell
+                for (i, row) in self.board.cells.iter_mut().enumerate() {
+                    for (j, cell) in row.iter_mut().enumerate() {
+                        if *cell == ' ' {
+                            *cell = self.players[self.turn as usize].symbol;
+                            return;
+                        }
+                    }
+                }
+            }
+
             println!("Player {}'s turn.", self.players[self.turn as usize].symbol);
 
             // Ask the user to enter a move
@@ -169,10 +198,11 @@ pub mod game {
     }
 
     impl Player {
-        pub fn new(symbol: char) -> Player {
+        pub fn new(symbol: char, human: bool) -> Player {
             Player {
                 symbol: symbol,
                 score: 0,
+                human: human,
             }
         }
     }
