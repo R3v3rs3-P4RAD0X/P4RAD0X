@@ -1,49 +1,55 @@
 # Imports
-from creator import Creator
+from errors import CreationError
+from creator import Creator, LANGUAGES
 from tracker import Tracker
+from functions import ask, read_env
 
-
-# Functions
-def read_env(file: str) -> dict[str, str]:
-    # Create the dictionary.
-    data = {}
-
-    # Open the file.
-    with open(file, "r") as f:
-        # Read the lines.
-        lines = f.readlines()
-
-        # Loop through the lines.
-        for line in lines:
-            # Check if the line is a comment.
-            if line.startswith("#"):
-                # Skip the line.
-                continue
-
-            # Split the line.
-            key, value = line.split("=")
-
-            # Add the key and value to the dictionary.
-            data[key] = value.strip()
-
-    # Return the dictionary.
-    return data
-
-
-# Main
+# Create the main function
 def main():
-    # Read the environment variables.
-    env = read_env(".env")
+    # Read the environment variables
+    env = read_env()
 
-    # Create the creator and tracker.
+    # Create a creator object
     creator = Creator()
+
+    # Create a tracker object
     tracker = Tracker()
 
-    project = creator.new(env["PROJECTS_DIRECTORY"])
+    # Ask for the project name
+    name = ask("What is the name of the project?", check=lambda x: len(x) > 0 and len(x) < 50)
 
-    print(project.to_json())
+    # Ask for the project description
+    description = ask("What is the description of the project?", check=lambda x: len(x) > 0 and len(x) < 100)
 
+    # Check if description has a . at the end
+    if description[-1] != ".":
+        # Add a . at the end
+        description += "."
 
-# Run the main function.
-if __name__ == "__main__":
+    # Ask for the project language
+    language = LANGUAGES[ask("What is the language of the project?", options=list(LANGUAGES.keys()))]
+
+    # Create the project data
+    creator.set_name(name)
+    creator.set_description(description)
+    creator.set_language(language)
+    creator.set_path(env["PROJECTS_DIRECTORY"])
+
+    # Set the project of the tracker
+    tracker.set_project(creator)
+
+    # Create the project
+    try:
+        creator.create()
+        tracker.track()
+
+    except CreationError as e:
+        print(e)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Check if the file is being run directly
+if __name__ == '__main__':
+    # Run the main function
     main()

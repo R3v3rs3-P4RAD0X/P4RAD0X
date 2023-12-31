@@ -10,51 +10,27 @@ The Project Manager is a set of scripts designed to assist with project creation
 
 ## Installation
 
-1. Clone the repository:
+Clone the repository:
 
-    ```bash
-    git clone https://github.com/R3v3rs3-P4RAD0X/P4RAD0X.git
-    ```
+```bash
+git clone https://github.com/R3v3rs3-P4RAD0X/P4RAD0X.git
+```
 
 ## Usage
 
-1. Navigate to the project directory:
+Run the start.sh script using the following commands:
 
-    ```bash
-    cd project-manager
-    ```
+```bash
+chmod +x start.sh
+```
 
-2. Setup Python environment:
+Then run the file:
 
-    ```bash
-    python -m venv .venv
-    ```
+```bash
+./start.sh
+```
 
-3. Activate the Python environment:
-
-    Windows:
-
-    ```bash
-    .venv/Scripts/Activate
-    ```
-
-    Unix:
-
-    ```bash
-    source .venv/bin/activate
-    ```
-
-4. Install the requirements:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-5. Run the project:
-
-    ```bash
-    python main.py
-    ```
+The script will ask what you want to do.
 
 ## License
 

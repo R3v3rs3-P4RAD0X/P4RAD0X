@@ -3,7 +3,10 @@
     "python.analysis.typeCheckingMode": "off",
     "python.analysis.autoImportCompletions": true,
     "cSpell.words": [
-        "colourise"
+        "colourise",
+        "rtype",
+        "sdir",
+        "sfile"
     ],
     "[gitignore]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
