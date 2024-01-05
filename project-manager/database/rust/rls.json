@@ -1,6 +1,0 @@
-{
-    "rls": {
-        "description": "A implementation of the unix LS command written in Rust.",
-        "path": "/P4RAD0X/projects/rust/rls"
-    }
-}
